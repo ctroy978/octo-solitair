@@ -46,7 +46,7 @@ impl Card{
         self.suit
     }
     pub fn print_card(&self)-> String{
-        format!("{} of {:?}", self.get_string_rank(), self.get_suit())
+        format!("{} of {:?}s", self.get_string_rank(), self.get_suit())
     }
 
 }
