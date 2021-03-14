@@ -24,7 +24,7 @@ pub fn deck_factory() -> Deck{
 
     for suit in suits.iter(){
         for i in ACE..KING + 1{
-            cards.push(Card::new(*suit, i));
+            cards.push(card_factory(*suit, i));
         }
     }
     Deck::new(cards)
