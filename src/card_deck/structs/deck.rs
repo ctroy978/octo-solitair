@@ -15,4 +15,12 @@ impl Deck{
     pub fn deal(&mut self) -> Card{
         self.deck.pop().unwrap()
     }
+
+    pub fn shuffle_deck(&mut self){
+        use rand::seq::SliceRandom;
+        use rand::thread_rng;
+
+        let mut rng = thread_rng();
+        self.deck.shuffle(&mut rng);
+    }
 }
