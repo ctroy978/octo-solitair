@@ -8,4 +8,9 @@ fn main() {
     d1.shuffle_deck();
     println!("{:?}", d1.deck[12]);
 
+    let mut h1 = card_deck::structs::hand::Hand::new();
+    h1.take(d1.deal());
+    println!("{:?}", h1);
+
+
 }
