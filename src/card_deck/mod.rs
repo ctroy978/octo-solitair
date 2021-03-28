@@ -2,6 +2,7 @@ pub mod structs;
 
 use structs::deck::Deck;
 use structs::card::Card;
+use structs::hand::Hand;
 
 const ACE: u8 = 1;
 const KING: u8 = 13;
@@ -29,3 +30,4 @@ pub fn deck_factory() -> Deck{
     }
     Deck::new(cards)
 }
+

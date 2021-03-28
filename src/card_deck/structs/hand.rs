@@ -16,6 +16,9 @@ impl Hand{
     pub fn take(&mut self, card: Card){
         self.hand.push(card);
     }
+    pub fn put(&mut self)-> Card{
+        self.hand.pop().unwrap()
+    }
     pub fn print_hand(&mut self){
         for card in self.hand.iter(){
             print!("{}s | ",card.print_card());

@@ -23,4 +23,7 @@ impl Deck{
         let mut rng = thread_rng();
         self.deck.shuffle(&mut rng);
     }
+    pub fn insert_card(&mut self, card: Card){
+        self.deck.insert(0, card);
+    }
 }
