@@ -4,23 +4,41 @@ use super::super::Suit;
 
 #[derive(Debug)]
 pub struct Card{
+    ///a card must have a Suit and a rank u8
     pub suit: Suit,
     pub rank: u8,
 }
 
 impl Card{
+    //Returns a card with a Suit and rank
+    ///
+    /// #Arguments
+    ///
+    /// *'suit' --a suit from the Suit enum
+    /// *'rank' --a u8
+    ///
+    ///This is usually created in the card_factory
+    ///in the top level mod.rs
+    /// 
     pub fn new(suit: Suit, rank: u8) -> Self{
         Self{
             suit,
             rank,
         }
     }
+    ///returns true if self.rank is greater than
+    ///the other card.
     pub fn is_greater(&self, other: &Card) -> bool{
         self.rank > other.rank
     }
+    ///Returns true if self.rank is equal to the
+    ///other card
     pub fn is_equal(&self, other: &Card) -> bool{
         self.rank == other.rank
     }
+    ///convert the rank u8 to a String
+    /// #example
+    /// 13 -> "King"
     pub fn get_string_rank(&self) -> String{
         match self.rank{
             13 => String::from("King"),
@@ -39,12 +57,18 @@ impl Card{
             _ => String::from("Joker"),
         }
     }
+    ///Returns the rank of the card as a u8
     pub fn get_rank(&self) -> u8{
         self.rank
     }
+    ///Returns the Suit of the card as an enum
     pub fn get_suit(&self) -> Suit{
         self.suit
     }
+    ///Returns a String representation of the card for
+    ///printing on screen. "Three of Spades"
+    ///#Example
+    ///println!("{}", c.print_card());
     pub fn print_card(&self)-> String{
         format!("{} of {:?}s", self.get_string_rank(), self.get_suit())
     }

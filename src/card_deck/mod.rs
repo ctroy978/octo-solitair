@@ -7,6 +7,7 @@ use structs::hand::Hand;
 const ACE: u8 = 1;
 const KING: u8 = 13;
 
+///the four standard suits of a 52 deck
 #[derive(Debug,Clone,Copy)]
 pub enum Suit{
     Spade,
@@ -15,10 +16,12 @@ pub enum Suit{
     Diamond,
 }
 
+///simply makes a card
 pub fn card_factory(suit: Suit, rank: u8) -> Card{
     Card::new(suit, rank)
 }
 
+///makes all the cards and fills a deck with them
 pub fn deck_factory() -> Deck{
     let suits: [Suit; 4] = [Suit::Spade, Suit::Club, Suit::Heart, Suit::Diamond];
     let mut cards = Vec::new();
@@ -29,5 +32,10 @@ pub fn deck_factory() -> Deck{
         }
     }
     Deck::new(cards)
+}
+
+///makes an empty hand
+pub fn hand_factory() -> Hand{
+   Hand::new() 
 }
 
