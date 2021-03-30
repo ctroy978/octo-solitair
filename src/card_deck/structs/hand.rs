@@ -1,11 +1,66 @@
+use std::collections::HashMap;
 
 use super::card::Card;
 
+
+
+#[derive(Debug)]
+pub struct Hand{
+    ///key will be card's id
+    hand: HashMap<String, Card>,
+}
+
+impl Hand{
+    pub fn new() -> Self{
+        let hand = HashMap::new();
+        Self{
+            hand,
+        }
+    }
+
+    pub fn take_card(&mut self, card: Card){
+        self.hand.insert(card.get_id(), card);
+    }
+
+    pub fn discard(&mut self, card: &str)-> Option<Card> {
+        self.hand.remove(card)
+    }
+
+    pub fn have_card(&mut self, card: &str)-> bool{
+        match self.hand.get(card){
+            Some(v) => true,
+            None => false,
+        }
+    }
+
+    pub fn print_hand(&self)-> String{
+        let mut string_hand = String::new();
+        string_hand.push_str("| ");
+        for (key, value) in &self.hand{
+            string_hand.push_str(&value.print_card());
+            string_hand.push_str(" | ")
+        }
+        string_hand
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 ///The hand is a vector of cards held 
 ///by the player
 #[derive(Debug)]
 pub struct Hand{
-    ///A hand must be a vector of type Card
     pub hand: Vec<Card>,
 }
 
@@ -38,4 +93,4 @@ impl Hand{
         string_hand
         }
 }
-
+*/

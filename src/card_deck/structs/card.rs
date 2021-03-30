@@ -41,20 +41,20 @@ impl Card{
     /// 13 -> "King"
     pub fn get_string_rank(&self) -> String{
         match self.rank{
-            13 => String::from("King"),
-            12 => String::from("Queen"),
-            11 => String::from("Jack"),
-            1 => String::from("Ace"),
-            2 => String::from("Two"),
-            3 => String::from("Three"),
-            4 => String::from("Four"),
-            5 => String::from("Five"),
-            6 => String::from("Six"),
-            7 => String::from("Seven"),
-            8 => String::from("Eight"),
-            9 => String::from("Nine"),
-            10 => String::from("Ten"),
-            _ => String::from("Joker"),
+            13 => String::from("king"),
+            12 => String::from("queen"),
+            11 => String::from("jack"),
+            1 => String::from("ace"),
+            2 => String::from("two"),
+            3 => String::from("three"),
+            4 => String::from("four"),
+            5 => String::from("five"),
+            6 => String::from("six"),
+            7 => String::from("seven"),
+            8 => String::from("eight"),
+            9 => String::from("nine"),
+            10 => String::from("ten"),
+            _ => String::from("joker"),
         }
     }
     ///Returns the rank of the card as a u8
@@ -65,12 +65,27 @@ impl Card{
     pub fn get_suit(&self) -> Suit{
         self.suit
     }
+    ///Returns the card id for the player to identify card
+    pub fn get_id(&self) -> String{
+        let rank_id = self.get_string_rank().chars().next().unwrap();
+        let suit_id = self.print_suit().chars().next().unwrap();
+        format!("{}{}",rank_id,suit_id)
+    }
+    ///Returns string of the suit
+    pub fn print_suit(&self) -> String{
+        match self.suit{
+           Suit::Spade => String::from("spade"),
+           Suit::Club => String::from("club"),
+           Suit::Diamond => String::from("diamond"), 
+           Suit::Heart => String::from("heart"),
+        }
+    }
     ///Returns a String representation of the card for
     ///printing on screen. "Three of Spades"
     ///#Example
     ///println!("{}", c.print_card());
     pub fn print_card(&self)-> String{
-        format!("{} of {:?}s", self.get_string_rank(), self.get_suit())
+        format!("{} of {}s", self.get_string_rank(), self.print_suit())
     }
 
 }
