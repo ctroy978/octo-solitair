@@ -8,7 +8,7 @@ const ACE: u8 = 1;
 const KING: u8 = 13;
 
 ///the four standard suits of a 52 deck
-#[derive(Debug,Clone,Copy)]
+#[derive(Debug,Clone,Copy,PartialEq, Eq)]
 pub enum Suit{
     Spade,
     Club,

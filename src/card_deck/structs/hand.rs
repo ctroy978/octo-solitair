@@ -26,6 +26,15 @@ impl Hand{
         self.hand.remove(card)
     }
 
+    pub fn show_rank_match(&mut self) -> Vec<&str>{
+        let mut s = Vec::new();
+        s.push("hi");
+        s.push("bye");
+        s
+    }
+    
+
+
     pub fn have_card(&mut self, card: &str)-> bool{
         match self.hand.get(card){
             Some(v) => true,

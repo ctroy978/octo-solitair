@@ -28,13 +28,17 @@ impl Card{
     }
     ///returns true if self.rank is greater than
     ///the other card.
-    pub fn is_greater(&self, other: &Card) -> bool{
+    pub fn is_greater_rank(&self, other: &Card) -> bool{
         self.rank > other.rank
     }
     ///Returns true if self.rank is equal to the
     ///other card
-    pub fn is_equal(&self, other: &Card) -> bool{
+    pub fn is_equal_rank(&self, other: &Card) -> bool{
         self.rank == other.rank
+    }
+
+    pub fn is_equal_suit(&self, other: &Card) -> bool{
+        self.suit == other.suit
     }
     ///convert the rank u8 to a String
     /// #example
@@ -67,7 +71,14 @@ impl Card{
     }
     ///Returns the card id for the player to identify card
     pub fn get_id(&self) -> String{
-        let rank_id = self.get_string_rank().chars().next().unwrap();
+        let rank_id = match self.get_rank(){
+            13 => "k".to_string(),
+            12 => "q".to_string(),
+            11 => "j".to_string(),
+            10 => "10".to_string(),
+            0 => "joker".to_string(),
+            _ => self.get_rank().to_string(), 
+        };
         let suit_id = self.print_suit().chars().next().unwrap();
         format!("{}{}",rank_id,suit_id)
     }

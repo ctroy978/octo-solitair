@@ -19,7 +19,10 @@ fn main() {
     }else{
         panic!("Discard failed: That card does not exist.")
     };
-    
+
+    println!("Got it maybe: {:?}", d1.take_card("2c").unwrap());
+
+    println!("show {:?}", h2.show_rank_match());
     
     println!("after discard: {}", h2.print_hand());
     println!("card discarded: {:?}", discarded);

@@ -30,6 +30,21 @@ impl Deck{
         self.deck.pop().unwrap()
     }
 
+    pub fn wrap_some<T>(value: T) -> Option<T>{
+        let x: Option<T> = Some(value);
+        return x
+    }
+
+    pub fn take_card(&mut self, card: &str) -> Option<Card>{
+        for (i,c) in self.deck.iter().enumerate(){
+            if c.get_id() == card{
+                return Some(self.deck.remove(i));
+            }
+        }
+        return None;
+}
+
+
     ///shuffles the deck in place
     pub fn shuffle_deck(&mut self){
         use rand::seq::SliceRandom;
